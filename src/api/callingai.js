@@ -1,4 +1,4 @@
-import { main } from "../genai.js";
+import { main } from "./genai.js";
 
 /**
  * Controller to handle AI prompt requests
