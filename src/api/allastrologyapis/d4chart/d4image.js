@@ -42,7 +42,7 @@ export const fetchD4ChartImage = async (argumentoncall) => {
     };
 
     const response = await axios(options);
-    return response.data.url || response.data;
+    return response.data.output;
 };
 
 /**

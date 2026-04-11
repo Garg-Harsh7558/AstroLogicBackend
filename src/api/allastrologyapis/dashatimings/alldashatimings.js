@@ -42,6 +42,8 @@ export const fetchDashaTimings = async (argumentoncall) => {
     };
 
     const response = await axios(options);
+    console.log(response.data);
+    response.data.output=JSON.parse(response.data.output);
     return response.data;
 };
 
@@ -52,10 +54,11 @@ const getDashaTimingsController = async (req, res) => {
     try {
         const datafromreq = Object.keys(req.body || {}).length > 0 ? req.body : req.query;
         const data = await fetchDashaTimings(datafromreq);
-        data.output = JSON.parse(data.output);
+         
+
         return res.status(200).json({
-            success: true,
-            dashaTimings: data
+            success: true, 
+            dashaTimings: data.output
         });
     } catch (error) {
         console.error("Dasha Timings Error:", error.response?.data || error.message);

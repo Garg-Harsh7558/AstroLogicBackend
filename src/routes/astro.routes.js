@@ -13,7 +13,7 @@ import getCurrentDashaController from "../api/allastrologyapis/dashatimings/curr
 import getShadbalaController from "../api/allastrologyapis/shadbala/shadbala.js";
 import getAllCharts from "../api/allastrologyapis/allcharthere/allcharthere.js";
 import getGeocodeController from "../api/geocode/geocode.js";
-import callingAIController from "../api/geocode/callingai.js";
+import callingAIController from "../api/gemini/callingai.js";
 
 import express from "express";
 const router = express.Router();

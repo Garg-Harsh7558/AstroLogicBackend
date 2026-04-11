@@ -53,7 +53,7 @@ const getShadbalaController = async (req, res) => {
         const data = await fetchShadbala(datafromreq);
         return res.status(200).json({
             success: true,
-            shadbala: data
+            shadbala: data.output
         });
     } catch (error) {
         console.error("Shadbala Error:", error.response?.data || error.message);

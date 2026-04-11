@@ -137,7 +137,7 @@ const login = async (req, res) => {
     return res.status(400).json(`Invalid credentials`);
   }
 // jwt token generation with 7 days expiry
-  const token = jwt.sign({ _id: user._id }, process.env.jwt_secret, {
+  const token = jwt.sign({ _id: user._id,username:user.username,email:user.email }, process.env.jwt_secret, {
     expiresIn: "7d",
   });
   user.loginToken = token;

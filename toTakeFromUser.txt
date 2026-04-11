@@ -1,0 +1,18 @@
+ year = 2024, 
+        month = 6, 
+        date = 10, 
+        hours = 15, 
+        minutes = 10, 
+        seconds = 0, 
+        latitude = 18.9333, 
+        longitude = 72.8166, 
+        timezone = 5.5,
+        name=""
+        
+
+
+
+         "--- D1 Chart (Rashi) ---\nAscendant: zodiacSign: Pisces, degree: 3.91462820527272, isRetro: false, houseNumber: 1, nakshatra: Uttaraabhadra, zodiacSignLord: Jupiter, nakshatraLord: Saturn\nSun: zodiacSign: Aries, degree: 4.8205288957576755, isRetro: false, houseNumber: 2, nakshatra: Aswini, zodiacSignLord: Mars, nakshatraLord: Ketu\nMoon: zodiacSign: Gemini, degree: 14.775516872703008, isRetro: false, houseNumber: 4, nakshatra: Aardra, zodiacSignLord: Mercury, nakshatraLord: Rahu\nMars: zodiacSign: Taurus, degree: 9.666331639375528, isRetro: false, houseNumber: 3, nakshatra: Krittika, zodiacSignLord: Venus, nakshatraLord: Sun\nMercury: zodiacSign: Aries, degree: 17.36055055020566, isRetro: false, houseNumber: 2, nakshatra: Bharani, zodiacSignLord: Mars, nakshatraLord: Venus\nJupiter: zodiacSign: Gemini, degree: 15.2629409221135, isRetro: false, houseNumber: 4, nakshatra: Aardra, zodiacSignLord: Mercury, nakshatraLord: Rahu\nVenus: zodiacSign: Aries, degree: 27.808140528505973, isRetro: false, houseNumber: 2, nakshatra: Krittika, zodiacSignLord: Mars, nakshatraLord: Sun\nSaturn: zodiacSign: Taurus, degree: 18.286893631391415, isRetro: false, houseNumber: 3, nakshatra: Rohini, zodiacSignLord: Venus, nakshatraLord: Moon\nRahu: zodiacSign: Taurus, degree: 26.76161250394592, isRetro: true, houseNumber: 3, nakshatra: Mrigasira, zodiacSignLord: Venus, nakshatraLord: Mars\nKetu: zodiacSign: Scorpio, degree: 26.761612503945884, isRetro: true, houseNumber: 9, nakshatra: Jyeshta, zodiacSignLord: Mars, nakshatraLord: Mercury\nUranus: zodiacSign: Aquarius, degree: 4.149567788865511, isRetro: false, houseNumber: 12, nakshatra: Dhanishta, zodiacSignLord: Saturn, nakshatraLord: Mars\nNeptune: zodiacSign: Capricorn, degree: 16.934314843434834, isRetro: false, houseNumber: 11, nakshatra: Sravanam, zodiacSignLord: Saturn, nakshatraLord: Moon\nPluto: zodiacSign: Scorpio, degree: 23.514751648766122, isRetro: true, houseNumber: 9, nakshatra: Jyeshta, zodiacSignLord: Mars, nakshatraLord: Mercury\n\n
+         D9 Chart (Navamsa): Data Unavailable\n
+         --- D10 Chart (Dashamsha) ---\nAscendant: Sign: Sagittarius, House: 1\nSun: Sign: Taurus, House: 6\nMoon: Sign: Libra, House: 11\nMars: Sign: Aries, House: 5\nMercury: Sign: Virgo, House: 10\nJupiter: Sign: Scorpio, House: 12\nVenus: Sign: Capricorn, House: 2\nSaturn: Sign: Cancer, House: 8\nRahu: Sign: Virgo, House: 10\nKetu: Sign: Pisces, House: 4\nUranus: Sign: Pisces, House: 4\nNeptune: Sign: Aquarius, House: 3\nPluto: Sign: Aquarius, House: 3\n\n
+         --- D8 Chart (Ashtamsha) ---\nAscendant: Sign: Virgo, House: 1\nSun: Sign: Taurus, House: 9\nMoon: Sign: Scorpio, House: 3\nMars: Sign: Aquarius, House: 6\nMercury: Sign: Leo, House: 12\nJupiter: Sign: Sagittarius, House: 4\nVenus: Sign: Scorpio, House: 3\nSaturn: Sign: Aries, House: 8\nRahu: Sign: Cancer, House: 11\nKetu: Sign: Cancer, House: 11\nUranus: Sign: Capricorn, House: 5\nNeptune: Sign: Leo, House: 12\nPluto: Sign: Gemini, House: 10\n\n"
