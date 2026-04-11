@@ -19,6 +19,10 @@ const getAllCharts = async (req, res) => {
         const source = Object.keys(req.body || {}).length > 0 ? req.body : req.query;
         const jwtdata=jwt.verify(req.cookies.token,process.env.jwt_secret);
         const {email,username,_id}=jwtdata;
+        const existingChart=await Chart.find({userId:_id})
+        if(existingChart){
+           existingChart.allchart.map((chart)=>{if(chart.name===source.name){return res.status(200).json({...chart,success:true})}})
+        }
 
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
         const delay = 2000; // 2000ms delay between calls
@@ -169,28 +173,48 @@ const getAllCharts = async (req, res) => {
             formatChartToString("D10 Chart (Dashamsha)", d10Chart) +
             formatShadbalaToString(shadbala) +
             formatDashaTimingsToString(dashatimings);
-
-        Chart.create({
+            if(existingChart){
+                existingChart.allchart.push({
+                    name:req.body.name,
+                    allChartDataString,
+                    d1Chart,
+                    d9Chart,
+                    d10Chart,
+                    d4Chart,
+                    d8Chart,
+                    shadbala,
+                    dashatimings,
+                    d1ChartImage,
+                    d4ChartImage,
+                    d9ChartImage,
+                    d10ChartImage,
+                    d8ChartImage
+                })
+                await existingChart.save();
+               }else{
+                Chart.create({
             userId:_id,
             email,
             username,
             allchart:[{
-                name:req.body.name,
-                d1Chart,
-                d4Chart,
-                d9Chart,
-                d10Chart,
-                d8Chart,
-                d1ChartImage,
-                d4ChartImage,
-                d9ChartImage,
-                d10ChartImage,
-                d8ChartImage,
-                shadbala,
-                dashatimings,
-                allChartDataString
+               name:req.body.name,
+                    allChartDataString,
+                    d1Chart,
+                    d9Chart,
+                    d10Chart,
+                    d4Chart,
+                    d8Chart,
+                    shadbala,
+                    dashatimings,
+                    d1ChartImage,
+                    d4ChartImage,
+                    d9ChartImage,
+                    d10ChartImage,
+                    d8ChartImage
             }]
         })
+               }
+        
 
         return res.status(200).json({
             success: true,
