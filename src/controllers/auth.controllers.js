@@ -7,6 +7,7 @@ import messagecontext from "../verifyuser/mailsmaple.js";
 import sendmail from "../verifyuser/sendmail.js";
 import generateOTP from "../otpGenerate/generateOTP.js";
 import transporter from "../verifyuser/sendmail.js";
+import chart from "../models/chart.model.js";
 
 const salt = bcrypt.genSaltSync(10);
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,6 +31,7 @@ try { const { username="null", email, password } = req.body;
   }
   req.body.password = bcrypt.hashSync(password, salt);
   const newUser = await User.create({email,username,password:req.body.password});
+  const newChart = await chart.create({email,username,userId:newUser._id});
 
   return res.status(201).json({
     message: "User registered successfully ,verify your email",
@@ -177,6 +179,7 @@ const createotpondb = await OtpSchema.create({
     otp: hashedOtpForPasswordReset,
   });
   try {
+    //checking nodemailer...
     await transporter.verify();
     console.log("Server is ready to take our messages");
   } catch (err) {
@@ -243,4 +246,3 @@ const verifyOtpForPasswordReset = async (req, res) => {
 }
 //exporting functions
 export { register, login, verifyEmail, verifyOtp, forgotPassword, verifyOtpForPasswordReset ,logout};
-// apply parent try catch to all functions
