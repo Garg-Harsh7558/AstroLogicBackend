@@ -15,6 +15,8 @@ import getAllCharts from "../api/allastrologyapis/allcharthere/allcharthere.js";
 import getGeocodeController from "../api/geocode/geocode.js";
 import callingAIController from "../api/gemini/callingai.js";
 import { birthdetails } from "../takingbirthdetails.js";
+import displayCharts from "../displayCharts.js";
+import deleteChart from "../api/allastrologyapis/allcharthere/deleteChart.js";
 
 import express from "express";
 const router = express.Router();
@@ -34,8 +36,9 @@ router.post("/get-current-dasha", getCurrentDashaController);
 router.post("/get-shadbala", getShadbalaController);
 router.post("/get-all-charts", getAllCharts);
 router.post("/get-geocode", getGeocodeController);
-router.get("/get-geocode", getGeocodeController);
 router.post("/get-ai-response", callingAIController);
 router.post("/take-birth-details", birthdetails);
+router.post("/display-charts", displayCharts);
+router.delete("/delete-chart", deleteChart);
 
 export default router;

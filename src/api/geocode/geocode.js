@@ -15,7 +15,6 @@ export const fetchGeocode = async (params) => {
         url: 'https://geocode.maps.co/search',
         params: {
             city,
-            state,
             country: "India",
             api_key: process.env.geocode_api_key
         }
@@ -35,7 +34,6 @@ export const fetchGeocode = async (params) => {
  */
 const getGeocodeController = async (req, res) => {
     try {
-        // Handle both body (POST) and query (GET) parameters
         const params = Object.keys(req.body || {}).length > 0 ? req.body : req.query;
         
         const data = await fetchGeocode(params);

@@ -61,11 +61,11 @@ const fetchAndProcessAllCharts = async (source, userId, email, username) => {
     const d10Chart = parseAstroData(d10ChartRes);
     const d8Chart = parseAstroData(d8ChartRes);
     
-    const d1ChartImage = d1ChartImageRes?.output || "Unavailable";
-    const d4ChartImage = d4ChartImageRes?.output || "Unavailable";
-    const d9ChartImage = d9ChartImageRes?.output || "Unavailable";
-    const d10ChartImage = d10ChartImageRes?.output || "Unavailable";
-    const d8ChartImage = d8ChartImageRes?.output || "Unavailable";
+    const d1ChartImage = d1ChartImageRes|| "Unavailable";
+    const d4ChartImage = d4ChartImageRes || "Unavailable";
+    const d9ChartImage = d9ChartImageRes || "Unavailable";
+    const d10ChartImage = d10ChartImageRes || "Unavailable";
+    const d8ChartImage = d8ChartImageRes || "Unavailable";
 
     const shadbala = parseAstroData(shadbalaRes);
     const dashatimings = parseAstroData(dashatimingsRes);
