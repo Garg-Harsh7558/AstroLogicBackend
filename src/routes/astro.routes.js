@@ -12,6 +12,7 @@ import getDashaTimingsController from "../api/allastrologyapis/dashatimings/alld
 import getCurrentDashaController from "../api/allastrologyapis/dashatimings/currentdasha.js";
 import getShadbalaController from "../api/allastrologyapis/shadbala/shadbala.js";
 import getAllCharts from "../api/allastrologyapis/allcharthere/allcharthere.js";
+import getHoraController from "../api/allastrologyapis/dailyhoroscope/hora.js";
 import getGeocodeController from "../api/geocode/geocode.js";
 import callingAIController from "../api/gemini/callingai.js";
 import { birthdetails } from "../takingbirthdetails.js";
@@ -35,6 +36,7 @@ router.post("/get-dasha-timings", getDashaTimingsController);
 router.post("/get-current-dasha", getCurrentDashaController);
 router.post("/get-shadbala", getShadbalaController);
 router.post("/get-all-charts", getAllCharts);
+router.post("/get-hora", getHoraController);
 router.post("/get-geocode", getGeocodeController);
 router.post("/get-ai-response", callingAIController);
 router.post("/take-birth-details", birthdetails);

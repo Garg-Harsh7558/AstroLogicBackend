@@ -19,7 +19,9 @@ export async function main(prompt) {
         
       // If successful, log and return the text
       console.log(`Success with ${model[i]}!`);
-      return response.text; 
+      // Optional chaining (?. ) makes this safe from crashing
+      const text = response.text;
+      return text || "The cosmic energy is low. Please try your question again."; 
 
     } catch (error) {
       console.warn(`${model[i]} failed. Error: ${error.message}`);
