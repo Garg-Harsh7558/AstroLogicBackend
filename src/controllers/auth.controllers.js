@@ -154,10 +154,10 @@ const login = async (req, res) => {
   return res
     .status(200)
     .cookie("token", token, {
-      httpOnly: true, // Protects against XSS (JS can't read it)
-      secure: true, // Only sent over HTTPS (use false for localhost testing)
-      sameSite: "Strict", // Protects against CSRF
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+      httpOnly: true, // Protects against XSS
+      secure: true,   // Required for SameSite: None
+      sameSite: "None", // Required for cross-domain cookies (Vercel -> Localhost)
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     })
     .json({ success: true, message: "Logged in successfully!" });
   }catch(err){res.status(500).json(`Internal server error in login`)}
@@ -247,7 +247,11 @@ const verifyOtpForPasswordReset = async (req, res) => {
       return res.status(400).json(`user not logged in`);
     }
     try {await User.findOneAndUpdate({loginToken:token},{$set:{loginToken:null}});
-    res.clearCookie("token");
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None"
+    });
     return res.status(200).json({message:"Logged out successfully"});
   } catch(err){
     console.error("Error during logout:", err);
