@@ -4,7 +4,7 @@ import authrouter from "./routes/auth.routes.js";
 import astrorouter from "./routes/astro.routes.js";
 import cookieParser from "cookie-parser";
 const app = express();
-const AllowedOrigins=process.env.CORS_ORIGIN?process.env.CORS_ORIGIN.split(","):["https://astro-logic-backend.vercel.app","http://localhost:5173"];
+const AllowedOrigins=process.env.CORS_ORIGIN?process.env.CORS_ORIGIN.split(","):["https://astrologic-frontend.vercel.app","http://localhost:5173"];
 app.use(
   cors({
     origin: AllowedOrigins,
