@@ -14,7 +14,9 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // registration logic
 const register = async (req, res) => {
-try { const { username="null", email, password } = req.body;
+  try {
+    const email = req.body?.email?.toLowerCase();
+    const { username, password } = req.body;
   if (!username || !email || !password) {
     return res.status(400).json(`All fields are required`);
   }
@@ -36,12 +38,13 @@ try { const { username="null", email, password } = req.body;
   return res.status(201).json({
     message: "User registered successfully ,verify your email",
     user: newUser,
-  });}catch(error){return res.status(500).json(`Internal server error in register`)}
+  });}catch(error){return res.status(500).json(`Internal server error in register -- ${error}`)}
 };
 // verification of email and sending otp
 const verifyEmail = async (req, res) => {
-  try{
-  const { email, username } = req.body;
+  try {
+    const email = req.body?.email?.toLowerCase();
+    const { username } = req.body;
 
   if (!email && !username) {
     return res.status(400).json("Email or username is required");
@@ -85,8 +88,9 @@ const verifyEmail = async (req, res) => {
 };
 // verification of otp
 const verifyOtp = async (req, res) => {
-  try{
-  const { email, username, otpCode } = req.body;
+  try {
+    const email = req.body?.email?.toLowerCase();
+    const { username, otpCode } = req.body;
 
   if ((!email && !username) || !otpCode) {
     return res.status(400).json("Email/username and OTP code are required");
@@ -120,7 +124,10 @@ const verifyOtp = async (req, res) => {
 };
 // login logic
 const login = async (req, res) => {
-  try{const { username, email, password } = req.body;
+  try {
+    const { username, password } = req.body;
+    const email=req.body?.email?.toLowerCase();
+
   if ((!username && !email) || !password) {
     return res.status(400).json(`credentials required`);
   }
@@ -160,7 +167,9 @@ const login = async (req, res) => {
 // forgot password logic
 const forgotPassword = async (req, res) => {
   try{
-  const { email, username } = req.body;
+  const {  username } = req.body;
+const email=req.body?.email?.toLowerCase();
+  
   if (!email && !username) {
     return res.status(400).json(`Email or username is required`);
   }
@@ -197,8 +206,9 @@ const createotpondb = await OtpSchema.create({
 };
 // verify otp for password reset and update password
 const verifyOtpForPasswordReset = async (req, res) => {
-  try{
-  const { email, username, password ,otpCode } = req.body;
+  try {
+    const email = req.body?.email?.toLowerCase();
+    const { username, password, otpCode } = req.body;
 
   if ((!email && !username) || !otpCode || !password) {
     return res.status(400).json("Email/username, OTP code, and new password are required");
