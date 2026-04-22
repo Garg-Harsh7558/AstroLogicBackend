@@ -4,25 +4,43 @@ import authrouter from "./routes/auth.routes.js";
 import astrorouter from "./routes/astro.routes.js";
 import cookieParser from "cookie-parser";
 const app = express();
-const defaultOrigins = ["https://astrologic-frontend.vercel.app", "http://localhost:5173"];
-const envOrigins = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",") : [];
+const defaultOrigins = [
+  "https://astrologic-frontend.vercel.app",
+  "https://astrologic-frontend.vercel.app/",
+  "http://localhost:5173",
+  "http://localhost:5173/"
+];
+const envOrigins = process.env.CORS_ORIGIN 
+  ? process.env.CORS_ORIGIN.split(",").map(o => o.trim()) 
+  : [];
 const AllowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])]; 
 
 app.use(
   cors({
     origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
-      if (AllowedOrigins.includes(origin)) {
+      
+      const normalizedOrigin = origin.toLowerCase().trim();
+      
+      // Check if the origin is in our allowed list or is a vercel subdomain
+      const isAllowed = AllowedOrigins.some(allowed => {
+        if (allowed === "*") return true;
+        const normalizedAllowed = allowed.toLowerCase().trim().replace(/\/$/, "");
+        return normalizedOrigin === normalizedAllowed;
+      }) || normalizedOrigin.endsWith('.vercel.app');
+
+      if (isAllowed) {
         callback(null, true);
       } else {
         console.log("Origin not allowed by CORS:", origin);
-        callback(new Error('Not allowed by CORS'));
+        callback(null, false);
       }
     },
     credentials: true,
     optionsSuccessStatus: 200,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'set-cookie']
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'set-cookie', 'cookie']
   }),
 );
 app.use(express.json());
