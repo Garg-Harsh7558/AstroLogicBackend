@@ -15,7 +15,7 @@ const parseAstroData = (apiResponse) => {
         }
         return output;
     } catch (e) {
-        console.warn("Parse Warning: Output was not valid JSON string", e.message);
+        console.error("Parse Warning: Output was not valid JSON string", e.message);
         return apiResponse.output;
     }
 };

@@ -24,7 +24,7 @@ export async function main(prompt) {
       return text || "The cosmic energy is low. Please try your question again."; 
 
     } catch (error) {
-      console.warn(`${model[i]} failed. Error: ${error.message}`);
+      console.error(`${model[i]} failed. Error: ${error.message}`);
       
       if (i === model.length - 1) {
         console.error("All models failed.");
