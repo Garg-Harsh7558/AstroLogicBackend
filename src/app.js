@@ -4,11 +4,25 @@ import authrouter from "./routes/auth.routes.js";
 import astrorouter from "./routes/astro.routes.js";
 import cookieParser from "cookie-parser";
 const app = express();
-const AllowedOrigins=process.env.CORS_ORIGIN?process.env.CORS_ORIGIN.split(","):["https://astrologic-frontend.vercel.app","http://localhost:5173"];
+const defaultOrigins = ["https://astrologic-frontend.vercel.app", "http://localhost:5173"];
+const envOrigins = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",") : [];
+const AllowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])]; 
+
 app.use(
   cors({
-    origin: AllowedOrigins,
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (AllowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("Origin not allowed by CORS:", origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
+    optionsSuccessStatus: 200,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'set-cookie']
   }),
 );
 app.use(express.json());
