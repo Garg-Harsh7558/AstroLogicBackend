@@ -154,10 +154,10 @@ const login = async (req, res) => {
   return res
     .status(200)
     .cookie("token", token, {
-      httpOnly: true, // Protects against XSS
-      secure: true,   // Required for SameSite: None
-      sameSite: "None", // Required for cross-domain cookies (Vercel -> Localhost)
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     })
     .json({ success: true, message: "Logged in successfully!" });
   }catch(err){res.status(500).json(`Internal server error in login`)}
@@ -240,23 +240,22 @@ const verifyOtpForPasswordReset = async (req, res) => {
 }catch(err){res.status(500).json(`Internal server error in verifyOtpForPasswordReset`)}
 };
   //logout logic
-  const logout=async(req,res)=>{
-    try{
-    const{token}=req.cookies;
-    if(!token){
-      return res.status(400).json(`user not logged in`);
-    }
-    try {await User.findOneAndUpdate({loginToken:token},{$set:{loginToken:null}});
+  const logout = async (req, res) => {
+    try {
+      const { token } = req.cookies;
+      if (token) {
+        await User.findOneAndUpdate({ loginToken: token }, { $set: { loginToken: null } });
+      }
     res.clearCookie("token", {
       httpOnly: true,
-      secure: true,
-      sameSite: "None"
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax"
     });
-    return res.status(200).json({message:"Logged out successfully"});
-  } catch(err){
+      return res.status(200).json({ message: "Logged out successfully" });
+    } catch (err) {
     console.error("Error during logout:", err);
-    return res.status(500).json({ message: "Failed to log out" });
-  }}catch(err){res.status(500).json(`Internal server error in logout`)}
+      return res.status(500).json({ message: "Internal server error in logout" });
 }
+  };
 //exporting functions
 export { register, login, verifyEmail, verifyOtp, forgotPassword, verifyOtpForPasswordReset ,logout};

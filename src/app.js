@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 const defaultOrigins = [
   "https://astrologic-frontend.vercel.app",
-  "https://astrologic-frontend.vercel.app/",
+  "https://astrologic-frontend.vercel.app/*",
   "http://localhost:5173",
   "http://localhost:5173/"
 ];

@@ -32,16 +32,16 @@ const fetchAndProcessAllCharts = async (source, userId, email, username) => {
     const d8ChartRes = await fetchD8Chart(source).catch(err => ({ error: err.message }));
     await sleep(delay);
 
-    const d1ChartImageRes = await fetchD1ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
-    await sleep(delay);
-    const d4ChartImageRes = await fetchD4ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
-    await sleep(delay);
-    const d9ChartImageRes = await fetchD9ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
-    await sleep(delay);
-    const d10ChartImageRes = await fetchD10ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
-    await sleep(delay);
-    const d8ChartImageRes = await fetchD8ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
-    await sleep(delay);
+    // const d1ChartImageRes = await fetchD1ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
+    // await sleep(delay);
+    // const d4ChartImageRes = await fetchD4ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
+    // await sleep(delay);
+    // const d9ChartImageRes = await fetchD9ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
+    // await sleep(delay);
+    // const d10ChartImageRes = await fetchD10ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
+    // await sleep(delay);
+    // const d8ChartImageRes = await fetchD8ChartImage(source).catch(err => ({ output: `Error: ${err.message}` }));
+    // await sleep(delay);
 
     const shadbalaRes = await fetchShadbala(source).catch(err => ({ error: err.message }));
     await sleep(delay);
@@ -61,11 +61,11 @@ const fetchAndProcessAllCharts = async (source, userId, email, username) => {
     const d10Chart = parseAstroData(d10ChartRes);
     const d8Chart = parseAstroData(d8ChartRes);
     
-    const d1ChartImage = d1ChartImageRes|| "Unavailable";
-    const d4ChartImage = d4ChartImageRes || "Unavailable";
-    const d9ChartImage = d9ChartImageRes || "Unavailable";
-    const d10ChartImage = d10ChartImageRes || "Unavailable";
-    const d8ChartImage = d8ChartImageRes || "Unavailable";
+    // const d1ChartImage = d1ChartImageRes|| "Unavailable";
+    // const d4ChartImage = d4ChartImageRes || "Unavailable";
+    // const d9ChartImage = d9ChartImageRes || "Unavailable";
+    // const d10ChartImage = d10ChartImageRes || "Unavailable";
+    // const d8ChartImage = d8ChartImageRes || "Unavailable";
 
     const shadbala = parseAstroData(shadbalaRes);
     const dashatimings = parseAstroData(dashatimingsRes);
@@ -140,8 +140,8 @@ const fetchAndProcessAllCharts = async (source, userId, email, username) => {
         name: source.name,
         allChartDataString,
         d1Chart, d9Chart, d10Chart, d4Chart, d8Chart,
-        shadbala, dashatimings,
-        d1ChartImage, d4ChartImage, d9ChartImage, d10ChartImage, d8ChartImage
+        shadbala, dashatimings
+        // ,d1ChartImage, d4ChartImage, d9ChartImage, d10ChartImage, d8ChartImage
     };
 
     if (existingChart) {
@@ -154,8 +154,8 @@ const fetchAndProcessAllCharts = async (source, userId, email, username) => {
     return {
         allChartDataString,
         d1Chart, d9Chart, d10Chart, d4Chart, d8Chart,
-        shadbala, dashatimings,
-        d1ChartImage, d4ChartImage, d9ChartImage, d10ChartImage, d8ChartImage
+        shadbala, dashatimings
+        // ,d1ChartImage, d4ChartImage, d9ChartImage, d10ChartImage, d8ChartImage
     };
 };
 

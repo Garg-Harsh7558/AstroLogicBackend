@@ -13,7 +13,7 @@ const deleteChart = async (req, res) => {
             return res.status(401).json({ message: "Unauthorized. Please log in." });
         }
 
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const decodedToken = jwt.verify(token, process.env.jwt_secret);
         const userId = decodedToken._id;
         const profileName = req.body.name;
 

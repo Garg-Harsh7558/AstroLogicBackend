@@ -18,9 +18,11 @@ import callingAIController from "../api/gemini/callingai.js";
 import { birthdetails } from "../takingbirthdetails.js";
 import displayCharts from "../displayCharts.js";
 import deleteChart from "../api/allastrologyapis/allcharthere/deleteChart.js";
-
+import loggedinuser from "../middleware/logged.middleware.js";
 import express from "express";
 const router = express.Router();
+
+router.use(loggedinuser);
 
 router.post("/get-d1-chart", getPlanetsController);
 router.post("/get-d1-chart-image", getD1ChartImageController);
@@ -42,5 +44,8 @@ router.post("/get-ai-response", callingAIController);
 router.post("/take-birth-details", birthdetails);
 router.post("/display-charts", displayCharts);
 router.delete("/delete-chart", deleteChart);
+router.post("/loggedin",(req,res)=>{
+    res.status(200).json({success:true,message:"user is logged in",user:req.user})
+});
 
 export default router;
