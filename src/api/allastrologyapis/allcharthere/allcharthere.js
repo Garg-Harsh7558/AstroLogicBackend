@@ -105,7 +105,7 @@ const fetchAndProcessAllCharts = async (source, userId, email, username) => {
         let result = "--- Shadbala ---\n";
         for (const p in raw) {
             if (typeof raw[p] !== 'object') continue;
-            result += `${p}: Strength: ${raw[p].Shadbala}, Rupas: ${raw[p].rupas}, Percentage: ${raw[p].percentage_strength}%\n`;
+            result += `${p}: Strength: ${raw[p].Shadbala}, Rupas: ${raw[p].rupas}, Percentage: ${raw[p].percentage_strength}%, ishta_phala: ${raw[p].ishta_phala}, kashta_phala: ${raw[p].kashta_phala},\n`;
         }
         return result + "\n";
     };
