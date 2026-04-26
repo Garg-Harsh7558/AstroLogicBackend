@@ -127,10 +127,10 @@ const fetchAndProcessAllCharts = async (source, userId, email, username) => {
 
     const allChartDataString = 
         formatD1ChartToString("D1 Chart (Rashi)", d1Chart) +
-        formatChartToString("D4 Chart (Chaturthamsa)", d4Chart) +
-        formatChartToString("D8 Chart (Ashtamsha)", d8Chart) +
         formatChartToString("D9 Chart (Navamsa)", d9Chart) +
         formatChartToString("D10 Chart (Dashamsha)", d10Chart) +
+        formatChartToString("D4 Chart (Chaturthamsa)", d4Chart) +
+        formatChartToString("D8 Chart (Ashtamsha)", d8Chart) +
         formatShadbalaToString(shadbala) +
         formatDashaToString(dashatimings);
 
